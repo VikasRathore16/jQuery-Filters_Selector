@@ -1,0 +1,26 @@
+body{
+	font-family: Arial;
+	font-size: 80%;
+}
+
+#wrapper{
+	width: 80%;
+	margin: 20px auto 0;
+}
+
+
+#product_list .delete{
+	margin-left: 10px;
+}
+
+#product_list table{
+	width: 400px;
+}
+
+#product_list table th{
+	text-align: left;
+}
+
+#close{
+    color: red;
+}
