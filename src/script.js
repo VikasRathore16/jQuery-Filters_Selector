@@ -64,16 +64,25 @@ $(document).ready(function () {
 });
 function search(){
 	var newproducts=[]
-	$("#myInput").on("keyup", function () {
-		var value = $(this).val();
+	$("#dropdown").on("click","#search", function () {
+		var value = $("#myInput").val();
 		/* console.log(value)
 		console.log(products.find(x => x.id === value),products.find(x => x.name === value)); */
-
-		$("#tbody tr").filter(function () {
-			console.log("filter");
-			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-		});
+		for(var i=0;i<products.length;i++){
+			if(value==products[i].id){
+				newproducts.push(products[i])
+			
+				
+			}
+			if(value==products[i].name){
+				newproducts.push(products[i])
+				
+			}
+			display(newproducts)
+		}
+		newproducts=[]
 	});
+	
 }
 function dropdown() {
 		var newproducts = [];
