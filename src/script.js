@@ -52,7 +52,7 @@ function osValue(){
 
 }
 function dropdown(){
-		
+	
 
 	$(document).on("change","#product_list",function(){
 		var brandvalue = brandValue()
@@ -121,11 +121,22 @@ function dropdown(){
 		
 	})
 }
+
+
+
 $(document).ready(function(){
 	display();
 	dropdown();
-	
+	$("#myInput").on("keyup", function() {
+		
+		var value = $(this).val().toLowerCase();
+		$("#tbody tr").filter(function() {
+			console.log("filter")
+		  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		});
+	  });
 	$("#product_list").on("click","#close",function(){
+		
 		var id = $(this).data('value')
 		console.log(id)
 		$(this).parent().hide()
@@ -142,7 +153,8 @@ function display() {
 		}
 	}
 	console.log(uniqueBrands,uniqueOs,"list")
-	var dropdownBrands="<div>Brands : <select id=\"brandNames\" name=\" brands\"><option value='Brand'>Brand</option> "
+	var inp = "<input id=\"myInput\" type=\"text\" placeholder=\"Search..\"></input><br>"
+	var dropdownBrands=inp + "<div>Brands : <select id=\"brandNames\" name=\" brands\"><option value='Brand'>Brand</option> "
 	for(var i=0;i<uniqueBrands.length;i++){
 		
 		dropdownBrands+="<Option value="+uniqueBrands[i] +" >"+ uniqueBrands[i] +"</option>"
@@ -161,11 +173,11 @@ function display() {
         <th>Brand</th>\
         <th>Qperating System</th>\
         <th>Remove</th>\
-    </tr>";
+    </tr><tbody id=\"tbody\">";
     for (var i = 0; i < products.length; i++) {
         data += "<tr id= '"+ products[i].id+"'>\
-		<td value='" + products[i].id + "' >" + products[i].id + "</td>\
-        <td value='"+ products[i].name + "'\">" + products[i].name + " </td>\
+		<td id=\"id\" value='" + products[i].id + "' >" + products[i].id + "</td>\
+        <td id=\"name\" value='"+ products[i].name + "'\">" + products[i].name + " </td>\
         <td value='"+ products[i].brand + "'\">" + products[i].brand + "</td>\
         <td value='"+ products[i].os + "'\">" + products[i].os + "</td>\
         <td data-value='"+products[i].id +"'id='close'>X</td>\
@@ -173,7 +185,7 @@ function display() {
     }
 
 
-    data += "</table>";
+    data += "</tbody></table>";
 
   
     $("#product_list").html(data);

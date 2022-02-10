@@ -24,3 +24,7 @@ body{
 #close{
     color: red;
 }
+
+select{
+	display: inline;
+}
