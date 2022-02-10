@@ -31,6 +31,15 @@ body{
 	margin-bottom: 20px;
 	padding: 5px 20px;
 }
+#search{
+	background-color: #EEEEEE;
+	padding: 5px 12px;
+	margin-left: 10px;
+}
+#search:hover{
+background-color: green;
+color: white;
+}
 select{
 	display: flex;
 	background-color: #EEEEEE;
