@@ -80,9 +80,9 @@ function search(){
 				newproducts.push(products[i])
 				
 			}
-			if(products[i].name.includes(value)){
+			if(products[i].name.toLocaleLowerCase().includes(value.toLocaleLowerCase())){
 				newproducts.push(products[i])
-				console.log(products[i].name,"pattern")
+				console.log(products[i].name)
 			}
 
 			display(newproducts)
