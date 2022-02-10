@@ -24,7 +24,18 @@ body{
 #close{
     color: red;
 }
-
+#drop{
+	overflow: hidden;
+}
+#myInput{
+	margin-bottom: 20px;
+	padding: 5px 20px;
+}
 select{
-	display: inline;
+	display: flex;
+	background-color: #EEEEEE;
+	float: left;
+	padding : 5px 12px;
+	margin-right: 20px;
+	margin-bottom: 20px;
 }
