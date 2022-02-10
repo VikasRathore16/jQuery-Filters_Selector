@@ -66,9 +66,11 @@ function search(){
 	var newproducts=[]
 	$("#dropdown").on("click","#search", function () {
 		var value = $("#myInput").val();
+		
 		/* console.log(value)
 		console.log(products.find(x => x.id === value),products.find(x => x.name === value)); */
 		for(var i=0;i<products.length;i++){
+		
 			if(value==products[i].id){
 				newproducts.push(products[i])
 			
@@ -78,6 +80,11 @@ function search(){
 				newproducts.push(products[i])
 				
 			}
+			if(products[i].name.includes(value)){
+				newproducts.push(products[i])
+				console.log(products[i].name,"pattern")
+			}
+
 			display(newproducts)
 		}
 		newproducts=[]

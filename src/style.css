@@ -9,20 +9,28 @@ body{
 }
 
 
-#product_list .delete{
-	margin-left: 10px;
+#close{
+	font-weight: bolder;
+	font-size: large;
+	text-align: center;
+
 }
 
 #product_list table{
-	width: 400px;
+	width: 100%;
 }
 
 #product_list table th{
-	text-align: left;
+	text-align: center;
+	font-size: 20px;
 }
-
+td{
+	font-size: 15px;
+	text-align: center;
+}
 #close{
     color: red;
+	cursor: pointer;
 }
 #drop{
 	overflow: hidden;
