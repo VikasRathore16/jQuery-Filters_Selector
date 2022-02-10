@@ -36,9 +36,95 @@ var products = [{
 }];
 var uniqueBrands =[]
 var uniqueOs =[]
-$(document).ready(function(){
+
+function brandValue(){
+
+		var brand=$('#brandNames option:selected').text(); 
 	
+		return brand
+
+}
+function osValue(){
+	
+		var Os=$('#brandOs option:selected').text(); 
+
+		return Os
+
+}
+function dropdown(){
+		
+
+	$(document).on("change","#product_list",function(){
+		var brandvalue = brandValue()
+		var Osvalue = osValue()
+		console.log(brandvalue,Osvalue)
+		
+		var data ="<table id=\"mytable\">\
+		<tr>\
+			<th>ID</th>\
+			<th>Name</th>\
+			<th>Brand</th>\
+			<th>Qperating System</th>\
+			<th>Remove</th>\
+		</tr>";
+		for(var i=0;i<products.length;i++){
+			
+			if(brandvalue=="Brand" && Osvalue=="Os"){
+				console.log(brandvalue,Osvalue)
+				data += "<tr id= '"+ products[i].id+"'>\
+				<td value='" + products[i].id + "' >" + products[i].id + "</td>\
+				<td value='"+ products[i].name + "'\">" + products[i].name + " </td>\
+				<td value='"+ products[i].brand + "'\">" + products[i].brand + "</td>\
+				<td value='"+ products[i].os + "'\">" + products[i].os + "</td>\
+				<td data-value='"+products[i].id +"'id='close'>X</td>\
+			  </tr>";
+			}
+			if(brandvalue==products[i].brand && Osvalue=="Os"){
+				console.log(products[i],Osvalue)
+				data+="<tr id= '"+ products[i].id+"'>\
+				<td value='" + products[i].id + "' >" + products[i].id + "</td>\
+				<td value='"+ products[i].name + "'\">" + products[i].name + " </td>\
+				<td value='"+ products[i].brand + "'\">" + products[i].brand + "</td>\
+				<td value='"+ products[i].os + "'\">" + products[i].os + "</td>\
+				<td data-value='"+products[i].id +"'id='close'>X</td>\
+			  </tr>"
+				
+			}
+			if(Osvalue==products[i].os && brandvalue=="Brand"){
+				console.log(products[i],brandvalue)
+				console.log("change")
+				data+="<tr id= '"+ products[i].id+"'>\
+				<td value='" + products[i].id + "' >" + products[i].id + "</td>\
+				<td value='"+ products[i].name + "'\">" + products[i].name + " </td>\
+				<td value='"+ products[i].brand + "'\">" + products[i].brand + "</td>\
+				<td value='"+ products[i].os + "'\">" + products[i].os + "</td>\
+				<td data-value='"+products[i].id +"'id='close'>X</td>\
+			  </tr>"
+			}
+			if(Osvalue==products[i].os && brandvalue==products[i].brand){
+				console.log(products[i],brandvalue,Osvalue)
+				console.log("change")
+				data+="<tr id= '"+ products[i].id+"'>\
+				<td value='" + products[i].id + "' >" + products[i].id + "</td>\
+				<td value='"+ products[i].name + "'\">" + products[i].name + " </td>\
+				<td value='"+ products[i].brand + "'\">" + products[i].brand + "</td>\
+				<td value='"+ products[i].os + "'\">" + products[i].os + "</td>\
+				<td data-value='"+products[i].id +"'id='close'>X</td>\
+			  </tr>"
+			}
+			
+			
+		}
+		data+="</table>"
+		$("#mytable").html(data);
+	
+		
+	})
+}
+$(document).ready(function(){
 	display();
+	dropdown();
+	
 	$("#product_list").on("click","#close",function(){
 		var id = $(this).data('value')
 		console.log(id)
@@ -56,15 +142,15 @@ function display() {
 		}
 	}
 	console.log(uniqueBrands,uniqueOs,"list")
-	var dropdownBrands="<div>Brands <select name=\" brands\">"
+	var dropdownBrands="<div>Brands : <select id=\"brandNames\" name=\" brands\"><option value='Brand'>Brand</option> "
 	for(var i=0;i<uniqueBrands.length;i++){
-		console.log(uniqueBrands[i])
-		dropdownBrands+="<Option data-value="+uniqueBrands[i] +" >"+ uniqueBrands[i] +"</option>"
+		
+		dropdownBrands+="<Option value="+uniqueBrands[i] +" >"+ uniqueBrands[i] +"</option>"
 	}
 	dropdownBrands+="</select>"
-	var dropdownOs= dropdownBrands + "<div>Os <select name=\" brands\">"
+	var dropdownOs= dropdownBrands + "<div>Os : <select id=\"brandOs\" name=\" brands\"><option value='Os'>Os</option>"
 	for(var i=0;i<uniqueOs.length;i++){
-		console.log(uniqueOs[i])
+		
 		dropdownOs+="<Option data-value="+uniqueOs[i] +" >"+ uniqueOs[i] +"</option>"
 	}
 	dropdownOs+="</select></div>"
@@ -89,7 +175,7 @@ function display() {
 
     data += "</table>";
 
-    console.log(data);
+  
     $("#product_list").html(data);
     
 }
