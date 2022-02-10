@@ -130,7 +130,7 @@ function uniqueValues(){
 	}
 	console.log(uniqueBrands, uniqueOs, "list");
 	var inp =
-		'<div id="drop"><input id="myInput" type="text" placeholder="Search.."></input>';
+		'<div id="drop"><input id="myInput" type="text" placeholder="Search by Id or Name"></input>';
 	var dropdownBrands =
 		inp +
 		'<select id="brandNames" name=" brands"><option value=\'Brand\'>Brand</option> ';
@@ -158,7 +158,7 @@ function display(newproducts) {
         <th>ID</th>\
         <th>Name</th>\
         <th>Brand</th>\
-        <th>Qperating System</th>\
+        <th>Operating System</th>\
         <th>Remove</th>\
     </tr><tbody id="tbody">';
 	
